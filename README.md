@@ -4,7 +4,7 @@ Esto es un launcher que me hice para mis 3 juegos (Modern Warfare 1, 2 y 3), par
 
 Este README lo escribo sobre todo para mí mismo, tipo notas, por si en algún momento formateo el pc, pierdo la carpeta, o me da un despiste y se me olvida cómo iba todo esto. Si estás viendo esto porque te ha llegado el repo de alguna forma, bienvenido, espero que te sirva también jaja.
 
-> **Aviso random:** en algunas partes que no tenía ni idea de cómo hacer (sobre todo lo de pywebview, lo del mando y meter el config.json bien) usé la IA de Claude para que me echara una mano y me explicara cómo iba. La recomiendo bastante, la verdad, me ayudó a entender cosas que si no me hubiera costado la vida buscar por mi cuenta.
+> **Aviso:** en algunas partes que no tenía ni idea de cómo hacer (sobre todo lo de pywebview, lo del mando y meter el config.json bien) usé la IA de Claude para que me echara una mano y me explicara cómo iba. La recomiendo bastante, la verdad, me ayudó a entender cosas que si no me hubiera costado la vida buscar por mi cuenta.
 
 ---
 
@@ -12,11 +12,11 @@ Este README lo escribo sobre todo para mí mismo, tipo notas, por si en algún m
 
 - [Qué es esto exactamente](#qué-es-esto-exactamente)
 - [Qué hace](#qué-hace)
-- [Por si se me olvida cómo ponerlo a funcionar otra vez](#por-si-se-me-olvida-cómo-ponerlo-a-funcionar-otra-vez)
-- [Cómo hacer el .exe otra vez](#cómo-hacer-el-exe-otra-vez)
-- [Cómo configurar los juegos la primera vez](#cómo-configurar-los-juegos-la-primera-vez-o-si-reinstalas)
+- [Cómo ponerlo a funcionar](#Cómo-ponerlo-a-funcionar)
+- [Cómo hacer el .exe](#cómo-hacer-el-exe)
+- [Cómo configurar los juegos](#cómo-configurar-los-juegos)
 - [Los archivos que hay](#los-archivos-que-hay-y-para-qué-sirve-cada-uno)
-- [Cosas que aprendí haciendo esto](#cosas-que-aprendí-haciendo-esto-por-si-me-sirve-para-otro-proyecto)
+- [Cosas que aprendí haciendo esto](#cosas-que-aprendí-haciendo)
 
 ---
 
@@ -34,7 +34,7 @@ Un programa de escritorio (un `.exe`) hecho con Python + pywebview, que básicam
 - Se puede jugar con mando entero, sin ratón (dpad para moverte, A para aceptar, B para volver, arriba para ir a los ajustes)
 - Al abrir el programa sale la carátula 5 segundos como si fuera pantalla de carga, y luego ya entra al launcher de verdad, a pantalla completa
 
-## Por si se me olvida cómo ponerlo a funcionar otra vez
+## Cómo ponerlo a funcionar
 
 Primero necesitas Python instalado en el pc (lo bajas de [python.org](https://www.python.org/downloads/)). Importante: cuando lo instales, tienes que marcar la casilla que dice **"Add python.exe to PATH"**, si no luego el pc no reconoce el comando `python` en la terminal y da error.
 
@@ -54,7 +54,7 @@ python main.py
 
 Si se abre la ventana y todo carga bien, genial, ya puedes seguir al siguiente paso.
 
-## Cómo hacer el .exe otra vez
+## Cómo hacer el .exe
 
 ```bash
 python -m PyInstaller --onefile --windowed --icon "icon.ico" --add-data "launcher_ui.html;." --add-data "splash.html;." --name "COD-MW-Trilogy-Launcher" main.py
@@ -64,7 +64,7 @@ Esto crea un par de carpetas nuevas (`build` y `dist`) y un archivo `.spec`, tod
 
 > Si `pyinstaller` solo (sin más) te da el típico error de "no se reconoce como un comando interno o externo", usa `python -m PyInstaller` como arriba, es lo mismo pero así siempre funciona.
 
-## Cómo configurar los juegos la primera vez (o si reinstalas)
+## Cómo configurar los juegos
 
 Al abrir el launcher, arriba a la derecha hay un icono de tuerca (⚙). Le das clic (o con el mando, arriba + A) y te deja elegir el `.exe` de cada juego, tanto el modo un jugador como el multijugador van por separado. Eso se guarda solo en `config.json`, al lado del `.exe`.
 
@@ -81,7 +81,7 @@ Al abrir el launcher, arriba a la derecha hay un icono de tuerca (⚙). Le das c
 | `requirements.txt` | La lista de librerías que hacen falta, para instalarlas todas de golpe con pip |
 | `icon.ico` | El icono del programa, se usa al compilar el .exe |
 
-## Cosas que aprendí haciendo esto (por si me sirve para otro proyecto)
+## Cosas que aprendí haciendo esto
 
 - pywebview deja meter html/css/js normal dentro de una app de escritorio, y desde el javascript puedes llamar funciones de Python con `window.pywebview.api.nombre_de_la_funcion()`. Muy útil para no tener que aprender una librería nueva de interfaces cada vez.
 - Para que la app funcione igual estando compilada en `.exe` que corriendo con `python main.py`, hay que usar `sys.frozen` para saber si está compilado o no, porque las rutas de los archivos cambian.
