@@ -42,17 +42,23 @@ First, you need Python installed on your PC (download it from [python.org](https
 
 Once Python is ready, open a terminal (`cmd`) inside the project folder and run:
 
-`pip install -r requirements.txt`
+```bash
+pip install -r requirements.txt
+```
 
 This installs pywebview (for the window interface) and PyInstaller (to build the EXE later). Then, to test that everything works before compiling:
 
-`python main.py`
+```bash
+python main.py
+```
 
 If the window opens and everything loads properly, great—you can move on to the next step.
 
 ## How to build the .exe
 
-`python -m PyInstaller --onefile --windowed --icon "icon.ico" --add-data "launcher_ui.html;." --add-data "splash.html;." --name "COD-MW-Trilogy-Launcher" main.py`
+```bash
+python -m PyInstaller --onefile --windowed --icon "icon.ico" --add-data "launcher_ui.html;." --add-data "splash.html;." --name "COD-MW-Trilogy-Launcher" main.py
+```
 
 This command generates a few new folders (`build` and `dist`) along with a `.spec` file. All of that is temporary build output from PyInstaller and doesn't need to be kept or uploaded anywhere. The only thing that matters is inside the `dist` folder: that's where your final ready-to-use `.exe` lives, and you can move it wherever you like.
 
